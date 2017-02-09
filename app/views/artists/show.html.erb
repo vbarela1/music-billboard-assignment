@@ -1,0 +1,6 @@
+<h1><%= @artist.name %></h1>
+
+<%= link_to 'Home', billboards_path %>
+<%= link_to 'Edit', edit_artist_path(@artist) %>
+<%= link_to 'Delete', artist_path(@artist), method: :delete %>
+

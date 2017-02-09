@@ -1,0 +1,9 @@
+<h1> Songs </h1>
+ 
+<% @songs.each do |song| %>
+  
+<h3><%=song.name %> </h3>
+<%= link_to 'Show', billboard_song_path(@billboard, song) %>
+<%= link_to 'New Song', new_billboard_path %>
+<%= link_to 'Artist', artists_song_path %>
+<% end %
