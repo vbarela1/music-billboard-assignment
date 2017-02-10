@@ -5,11 +5,12 @@ class BillboardsController < ApplicationController
   @billboards = Billboard.all 
   end
 
-  def show 
+  def show
+    @artists = @billboard.artists.all
   end
 
   def new
-  @billboard = Billboard.new 
+    @billboard = Billboard.new 
   end
 
   def create

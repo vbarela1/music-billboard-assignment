@@ -1,6 +1,7 @@
-<h1><%= @song.name %></h1>
+<%= link_to 'Home', billboards_path %>
+<h1>Song</h1> 
+<h3><%= @song.title %></h3>
 
-<%= link_to 'Back', billboards_path %>
-<%= link_to 'Edit', edit_billboard_song_path(@billboard, @song) %>
-<%= link_to 'Delete', billboard_songs_path(@billboard, @song), method: :delete %>
+
+<<%= link_to 'Delete', artist_song_path(@artist, @song), method: :delete %>
 

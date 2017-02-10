@@ -1,20 +1,20 @@
 class ArtistsController < ApplicationController
-  before_action :set_billboard
+ 
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   def index
-    @artists = @billboard.artists  
+    @artists = Artist.all  
   end
 
   def show
   end
 
-  def newP
+  def new
     @artists = @billboard.artists.new 
   end
 
   def create
-    @artist = @billboard.artists.new(artist_params) 
+    @artist = Artist.new(artist_params) 
     if @artist.save
       redirect_to billboard_artist_path(@billboard, @artist)
     else
@@ -35,16 +35,13 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.destroy
-    redirect_to billboard_artist_path(@billboard)
+    redirect_to artists_path
   end 
 
   private 
-  def set_billboard
-    @billboard = Billboard.find(params[:billboard_id])
-  end 
 
   def set_artist  
-    @artist = @billobard.artists.find(params[:id])
+    @artist = Artist.find(params[:id])
   end 
 
   def artist_params

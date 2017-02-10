@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
-  before_action :set_billboard
-  before_action :set_artist 
+ 
+  before_action :set_artist
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,24 +36,22 @@ class SongsController < ApplicationController
 
   def destroy
     @song.destroy
-    redirect_to billboard_song_path(@billboard, @song)
+    redirect_to artist_path(@artist)
   end 
 
   private 
-  def set_billboard
-    @billboard = Billboard.find(params[:billboard_id])
-  end 
+
 
   def set_artist  
-    @artist = @billboard.artists.find(params[:id])
+    @artist = Artist.find(params[:artist_id])
   end 
 
   def set_song 
-    @song = @billboard.songs.find(params[:id])
+    @song = @artist.songs.find(params[:id])
   end 
 
   def song_params
-    params.require(:song).permit(:title, :album, :billboard_id)
+    params.require(:song).permit(:title, :album, :artist_id)
   end 
 
 end
